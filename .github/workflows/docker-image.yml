@@ -1,0 +1,35 @@
+name: Build and Publish Docker Container
+
+on:
+  push:
+    tags:
+      - '**'
+  workflow_dispatch:
+
+jobs:
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: FranzDiebold/github-env-vars-action@v2
+
+      - name: Set major tag name
+        run: echo "TAG_MAJOR=$(echo $CI_REF_NAME | cut -d. -f1)" >> $GITHUB_ENV
+
+      - name: Set minor tag name
+        run: echo "TAG_MINOR=${{ env.TAG_MAJOR }}.$(echo $CI_REF_NAME | cut -d. -f2)" >> $GITHUB_ENV
+
+      - name: Build Docker Image
+        run: |
+          docker build --no-cache \
+            -t rboonzaijer/docker-registry-viewer:latest \
+            -t rboonzaijer/docker-registry-viewer:$CI_REF_NAME \
+            -t rboonzaijer/docker-registry-viewer:${{ env.TAG_MAJOR }} \
+            -t rboonzaijer/docker-registry-viewer:${{ env.TAG_MINOR }} \
+            .
+      - name: Push to docker hub
+        run: |
+          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+          docker push --all-tags rboonzaijer/docker-registry-viewer
