@@ -15,7 +15,7 @@
 
 ![](docs/nas-01-hostname.png)
 
-- Download the 'registry' image
+- Download the 'registry' image (just choose the 'latest' version, don't mind the screenshot)
 
 ![](docs/registry-01-download-image.png)
 
@@ -39,7 +39,7 @@
 
 # Docker Registry Viewer
 
-- Download the image 'rboonzaijer/docker-registry-viewer'
+- Download the image 'rboonzaijer/docker-registry-viewer' (just choose the 'latest' version, don't mind the screenshot)
 
 ![](docs/viewer-01-download-image.png)
 
