@@ -2,6 +2,8 @@
 
 -  List all your docker images and tags from your private registry in one simple overview
 
+[![Build and Publish Docker Container](https://github.com/rboonzaijer/docker-registry-viewer/actions/workflows/docker-image.yml/badge.svg)](https://github.com/rboonzaijer/docker-registry-viewer/actions/workflows/docker-image.yml)
+
 # Installation on localhost (Docker Desktop)
 
 ### (for Synology NAS install, check out: [readme-synology.md](readme-synology.md)
