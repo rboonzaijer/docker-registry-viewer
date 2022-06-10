@@ -75,3 +75,5 @@ docker rmi php:8.1-alpine3.16
 ```
 
 - Navigate to the Docker Registry Viewer: [http://localhost:8500](http://localhost:8500)
+
+### (for Synology NAS install, check out: [readme-synology.md](readme-synology.md)
